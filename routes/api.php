@@ -21,5 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //group route with prefix "web"
 Route::prefix('web')->group(function () {
 
+    Route::get('/mahasiswa', [App\Http\Controllers\Api\Web\MahasiswaController::class, 'show']);
     Route::post('/ktmphoto', [App\Http\Controllers\Api\Web\KtmPhotoController::class, 'store']);
 });
