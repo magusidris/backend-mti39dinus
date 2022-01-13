@@ -24,7 +24,7 @@ class KumpulDMController extends Controller
         }
 
         // upload doc
-        $image = $request->file('image');
+        $image = $request->file('doc');
 
         $slugnpm = Str::slug($request->npm, '_');
         $slugname = Str::slug($request->name, '_');
