@@ -24,14 +24,14 @@ class KumpulDMController extends Controller
         }
 
         // upload doc
-        $image = $request->file('image');
+        $doc = $request->file('doc');
 
         $slugnpm = Str::slug($request->npm, '_');
         $slugname = Str::slug($request->name, '_');
-        $extname = $image->getClientOriginalExtension();
+        $extname = $doc->getClientOriginalExtension();
         $docname = $slugnpm.'_'.$slugname.'.'.$extname;
 
-        $image->storeAs('public/kumpuldms', $docname);
+        $doc->storeAs('public/kumpuldms', $docname);
 
         // create Photo
         $tugas = Datming::create([
