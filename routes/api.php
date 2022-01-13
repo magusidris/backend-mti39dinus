@@ -23,4 +23,5 @@ Route::prefix('web')->group(function () {
 
     Route::get('/mahasiswa', [App\Http\Controllers\Api\Web\MahasiswaController::class, 'show']);
     Route::post('/ktmphoto', [App\Http\Controllers\Api\Web\KtmPhotoController::class, 'store']);
+    Route::post('/kumpuldm', [App\Http\Controllers\Api\Web\KumpulDMController::class, 'store']);
 });
