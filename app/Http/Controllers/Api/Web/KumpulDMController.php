@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Api\Web;
 
-use App\Models\KtmPhoto as Photo;
+use App\Models\KumpulDm as Datming;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
-use App\Http\Resources\KtmResource;
+use App\Http\Resources\KumpulDMResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class KtmPhotoController extends Controller
+class KumpulDMController extends Controller
 {
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'image'         => 'required|image|mimes:jpeg,jpg,png|max:2000',
+            'doc'           => 'required|mimes:doc,docx,pdf|max:3000',
             'npm'           => 'required',
             'name'          => 'required'
         ]);
@@ -23,29 +23,29 @@ class KtmPhotoController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        // upload image
+        // upload doc
         $image = $request->file('image');
 
         $slugnpm = Str::slug($request->npm, '_');
         $slugname = Str::slug($request->name, '_');
         $extname = $image->getClientOriginalExtension();
-        $imgname = $slugnpm.'_'.$slugname.'.'.$extname;
+        $docname = $slugnpm.'_'.$slugname.'.'.$extname;
 
-        $image->storeAs('public/ktmphotos', $imgname);
+        $image->storeAs('public/kumpuldms', $docname);
 
         // create Photo
-        $photo = Photo::create([
-            'image'     => $imgname,
+        $tugas = Datming::create([
+            'doc'     => $docname,
             'npm'       => $request->npm,
             'name'      => $request->name
         ]);
 
-        if ($photo) {
+        if ($tugas) {
             // return success with Api Resource
-            return new KtmResource(true, 'Photo KTM Berhasil Disimpan!', $photo);
+            return new KumpulDMResource(true, 'Tugas Berhasil Disimpan!', $tugas);
         }
 
         // return failed with Api Resource
-        return new KtmResource(false, 'Photo KTM Gagal Disimpan!', null);
+        return new KumpulDMResource(false, 'Tugas Gagal Disimpan!', null);
     }
 }
