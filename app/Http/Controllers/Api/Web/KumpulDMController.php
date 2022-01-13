@@ -35,7 +35,7 @@ class KumpulDMController extends Controller
 
         // create Photo
         $tugas = Datming::create([
-            'doc'     => $docname,
+            'image'     => $docname,
             'npm'       => $request->npm,
             'name'      => $request->name
         ]);

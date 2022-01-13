@@ -15,7 +15,7 @@ class CreateKumpulDmsTable extends Migration
     {
         Schema::create('kumpul_dms', function (Blueprint $table) {
             $table->id();
-            $table->string('doc');
+            $table->string('image');
             $table->string('npm')->nullable();
             $table->string('name')->nullable();
             $table->timestamps();
