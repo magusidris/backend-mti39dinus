@@ -22,8 +22,8 @@ class KumpulDm extends Model
      * @param  mixed $image
      * @return void
      */
-    public function getImageAttribute($image)
+    public function getImageAttribute($doc)
     {
-        return asset('storage/kumpuldms/' . $image);
+        return asset('storage/kumpuldms/' . $doc);
     }
 }
