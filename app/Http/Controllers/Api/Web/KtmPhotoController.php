@@ -14,7 +14,7 @@ class KtmPhotoController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'image'         => 'required|image|mimes:jpeg,jpg,png,pdf|max:2000',
+            'image'         => 'required|mimes:jpeg,jpg,png,pdf|max:2000',
             'npm'           => 'required',
             'name'          => 'required'
         ]);
