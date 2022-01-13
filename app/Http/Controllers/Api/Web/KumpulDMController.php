@@ -14,7 +14,7 @@ class KumpulDMController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'doc'           => 'required|mimes:doc,docx,pdf|max:3000',
+            'image'           => 'required|mimes:doc,docx,pdf|max:3000',
             'npm'           => 'required',
             'name'          => 'required'
         ]);
@@ -24,7 +24,7 @@ class KumpulDMController extends Controller
         }
 
         // upload doc
-        $image = $request->file('doc');
+        $image = $request->file('image');
 
         $slugnpm = Str::slug($request->npm, '_');
         $slugname = Str::slug($request->name, '_');
