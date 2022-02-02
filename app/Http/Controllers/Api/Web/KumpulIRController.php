@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\Web;
 
 use App\Models\KumpulIr as Infer;
 use App\Http\Controllers\Controller;
